@@ -121,7 +121,7 @@ public class Reservas implements IReservas {
         Iterator<Reserva> iteratorReserva= get().iterator();
         while (iteratorReserva.hasNext()){
             Reserva reserva= iteratorReserva.next();
-            if (reserva.getHabitacion().getTipoHabitacion().equals(tipoHabitacion))
+            if (reserva.getHabitacion().equals(tipoHabitacion))
                 copiaReservaTipoHabitacion.add(reserva);
         }
         /*for (Reserva reserva: get()){

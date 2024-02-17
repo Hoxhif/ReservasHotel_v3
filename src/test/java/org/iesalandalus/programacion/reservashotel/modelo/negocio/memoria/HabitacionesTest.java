@@ -3,6 +3,7 @@ package org.iesalandalus.programacion.reservashotel.modelo.negocio.memoria;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Habitacion;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Simple;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Suite;
+import org.iesalandalus.programacion.reservashotel.modelo.dominio.Doble;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
