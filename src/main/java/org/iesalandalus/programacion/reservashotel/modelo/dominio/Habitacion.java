@@ -2,7 +2,7 @@ package org.iesalandalus.programacion.reservashotel.modelo.dominio;
 
 import java.util.Objects;
 
-public class Habitacion {
+public abstract class Habitacion {
     public static final double MIN_PRECIO_HABITACION=40;
     public static final double MAX_PRECIO_HABITACION=150;
     public static final int MIN_NUMERO_PUERTA=0;
@@ -14,22 +14,20 @@ public class Habitacion {
     private int planta;
     private int puerta;
     private double precio;
-    private TipoHabitacion tipoHabitacion;
 
 
     public Habitacion(int planta, int puerta, double precio){
         setPlanta(planta);
         setPuerta(puerta);
         setPrecio(precio);
-        setTipoHabitacion(TipoHabitacion.SIMPLE);
         setIdentificador(String.valueOf(getPlanta()+String.valueOf(getPuerta())));
     }
 
-    public Habitacion(int planta, int puerta, double precio,TipoHabitacion tipoHabitacion){
+    /*public Habitacion(int planta, int puerta, double precio,TipoHabitacion tipoHabitacion){
         this(planta,puerta,precio);
         setTipoHabitacion(tipoHabitacion);
         setIdentificador(String.valueOf(getPlanta()+String.valueOf(getPuerta())));
-    }
+    }*/
 
     public Habitacion(Habitacion habitacion){
         if (habitacion==null)
@@ -37,9 +35,12 @@ public class Habitacion {
         setPlanta(habitacion.getPlanta());
         setPuerta(habitacion.getPuerta());
         setPrecio(habitacion.getPrecio());
-        setTipoHabitacion(habitacion.getTipoHabitacion());
         setIdentificador();
     }
+
+    //Declaramos el método abstracto en nuestra clase Habitación.
+    public abstract int getNumeroMaximoPersonas();
+
 
     public String getIdentificador() {
         return identificador;
@@ -102,6 +103,7 @@ public class Habitacion {
         this.precio = precio;
     }
 
+    /*
     public TipoHabitacion getTipoHabitacion() {
         return tipoHabitacion;
     }
@@ -110,7 +112,7 @@ public class Habitacion {
         if (tipoHabitacion==null)
             throw new NullPointerException("ERROR: No se puede establecer un tipo de habitación nula.");
         this.tipoHabitacion = tipoHabitacion;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {

@@ -77,34 +77,10 @@ public class Habitaciones {
 
         if (tipoHabitacion == null)
             throw new NullPointerException("ERROR: No se pueden buscar reservas de un huesped nulo // Es posible que se haya equivocado al escribir el DNI.");
-        //return Arrays.stream(copiaProfundaReservas()).filter(reserva -> reserva.getHuesped().equals(huesped)).toArray(Reserva[]::new);
-        // lo he copiado de otro método y lo he remplazado a tipoHabitacion.
-        /*int contador = 0;
-        for (Habitacion contadorHabitacion : get()) {
-            if (contadorHabitacion.getTipoHabitacion().equals(tipoHabitacion)) {
-                contador++;
-            }
-        }
-        Habitacion[] habitacionesTipo = new Habitacion[contador];
-        if (contador == 0) {
-            System.out.println("El huesped no tiene ningúna reserva creada.");
-        } else {
 
-            contador = 0;
-            for (Habitacion habitacionTipo : get()) {
-                if (habitacionTipo.getTipoHabitacion().equals(tipoHabitacion)) {
-                    habitacionesTipo[contador++] = habitacionTipo;
-                }
-            }
-
-        }return habitacionesTipo;*/
 
         ArrayList<Habitacion> copiaHabitaciones= new ArrayList<>();
-        /*for (Habitacion habitacion: get()){
-            if (habitacion.getTipoHabitacion().equals(tipoHabitacion)){
-                copiaHabitaciones.add(habitacion);
-            }
-        }*/
+
         Iterator<Habitacion> iteradorHabitacion= get().iterator();
 
         while(iteradorHabitacion.hasNext()){
@@ -113,18 +89,11 @@ public class Habitaciones {
                 copiaHabitaciones.add(comprobarHabitacion);
         }
 
-    // Usamos reversed como en el método consultarDisponibilidad para que sea del número más bajo al más alto.
+
 
         return copiaHabitaciones;
     }
-    /*
-    Ya no hará falta los métodos get de los atributos para ArrayList.
-    public int getCapacidad() {
-        return capacidad;
-    }
-    */
 
-// esto directamente deuvleve el tamaño.
     public int getTamano() {
         return get().size();
     }
