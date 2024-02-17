@@ -3,18 +3,15 @@ package org.iesalandalus.programacion.reservashotel.vista;
 
 
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.*;
-import org.iesalandalus.programacion.reservashotel.modelo.negocio.Habitaciones;
-import org.iesalandalus.programacion.reservashotel.modelo.negocio.Huespedes;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Iterator;
 
 //import static org.iesalandalus.programacion.reservashotel.MainApp.*;
-import static org.iesalandalus.programacion.reservashotel.modelo.Modelo.*;
+
 //import static org.iesalandalus.programacion.reservashotel.modelo.Modelo.*;
 
 

@@ -1,15 +1,16 @@
-package org.iesalandalus.programacion.reservashotel.modelo.negocio;
+package org.iesalandalus.programacion.reservashotel.modelo.negocio.memoria;
 
 
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Habitacion;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Huesped;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.TipoHabitacion;
+import org.iesalandalus.programacion.reservashotel.modelo.negocio.IHabitaciones;
 
 import javax.naming.OperationNotSupportedException;
 import java.util.*;
 
 
-public class Habitaciones {
+public class Habitaciones implements IHabitaciones {
 
     /*
     Los atributos pertenecientes a el array tampoco harán falta.
@@ -38,7 +39,7 @@ public class Habitaciones {
         this.tamano=0;
 
     }*/
-
+    @Override
     public ArrayList<Habitacion> get(){
         return copiaProfundaHabitaciones();
     }
@@ -72,7 +73,7 @@ public class Habitaciones {
         Collections.sort(copiaHabitaciones, Comparator.comparing(Habitacion::getIdentificador));
         return copiaHabitaciones;
     }
-
+    @Override
     public ArrayList<Habitacion> get(TipoHabitacion tipoHabitacion){
 
         if (tipoHabitacion == null)
@@ -85,7 +86,7 @@ public class Habitaciones {
 
         while(iteradorHabitacion.hasNext()){
             Habitacion comprobarHabitacion= iteradorHabitacion.next();
-            if (comprobarHabitacion.getTipoHabitacion().equals(tipoHabitacion))
+            if (comprobarHabitacion.equals(tipoHabitacion))
                 copiaHabitaciones.add(comprobarHabitacion);
         }
 
@@ -93,13 +94,13 @@ public class Habitaciones {
 
         return copiaHabitaciones;
     }
-
+    @Override
     public int getTamano() {
         return get().size();
     }
 
 
-
+    @Override
     public void insertar (Habitacion habitacion) throws OperationNotSupportedException{
         if (habitacion == null)
             throw new NullPointerException("ERROR: No se puede insertar una habitación nula.");
@@ -149,6 +150,7 @@ Estos métodos se usaban para controlar el array.
     }
     */
 
+    @Override
     public Habitacion buscar (Habitacion habitacion) {
         if (habitacion == null)
             throw new NullPointerException("ERROR: No se puede buscar una habitación nula.");
@@ -166,6 +168,7 @@ Estos métodos se usaban para controlar el array.
         }return null;
     }
 
+    @Override
     public void borrar (Habitacion habitacion) throws OperationNotSupportedException{
         if (habitacion == null)
             throw new NullPointerException("ERROR: No se puede borrar una habitación nula.");

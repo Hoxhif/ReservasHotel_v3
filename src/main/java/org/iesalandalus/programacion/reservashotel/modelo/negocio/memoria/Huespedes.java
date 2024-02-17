@@ -1,14 +1,15 @@
-package org.iesalandalus.programacion.reservashotel.modelo.negocio;
+package org.iesalandalus.programacion.reservashotel.modelo.negocio.memoria;
 
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Huesped;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservashotel.modelo.negocio.IHuespedes;
 
 import javax.naming.OperationNotSupportedException;
 
 
 import java.util.*;
 
-public class Huespedes {
+public class Huespedes implements IHuespedes {
 
     ArrayList<Huesped> coleccionHuespedes= new ArrayList<>();
     public Huespedes(){
@@ -16,7 +17,7 @@ public class Huespedes {
 
     }
 
-
+    @Override
     public ArrayList<Huesped> get() {
         return copiaProfundaHuespedes();
     }
@@ -42,11 +43,13 @@ public class Huespedes {
     }
 
 
+    @Override
     public int getTamano() {
         return get().size();
     }
 
 
+    @Override
     public void insertar(Huesped huesped) throws OperationNotSupportedException{
         if (huesped == null)
             throw new NullPointerException("ERROR: No se puede insertar un huésped nulo.");
@@ -55,7 +58,7 @@ public class Huespedes {
         coleccionHuespedes.add(huesped);
     }
 
-
+    @Override
     public Huesped buscar (Huesped huesped){
         if (huesped == null)
             throw new NullPointerException("ERROR: No se puede buscar un huésped nulo.");
@@ -64,6 +67,7 @@ public class Huespedes {
         else return null;
     }
 
+    @Override
     public void borrar (Huesped huesped) throws OperationNotSupportedException{
         if (huesped == null)
             throw new NullPointerException("ERROR: No se puede borrar un huésped nulo.");

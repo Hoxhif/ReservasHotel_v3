@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservashotel.modelo.negocio;
+package org.iesalandalus.programacion.reservashotel.modelo.negocio.memoria;
 
 
 
@@ -6,13 +6,14 @@ import org.iesalandalus.programacion.reservashotel.modelo.dominio.Habitacion;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Huesped;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Reserva;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.TipoHabitacion;
+import org.iesalandalus.programacion.reservashotel.modelo.negocio.IReservas;
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Reservas {
+public class Reservas implements IReservas {
 
     ArrayList<Reserva> coleccionReservas= new ArrayList<Reserva>();
 
@@ -20,6 +21,7 @@ public class Reservas {
 
     }
 
+    @Override
     public ArrayList<Reserva> get(){
         return copiaProfundaReservas();
     }
@@ -57,10 +59,12 @@ public class Reservas {
     }
 
 
+    @Override
     public int getTamano() {
         return get().size();
     }
 
+    @Override
     public void insertar (Reserva reserva) throws OperationNotSupportedException{
         if (reserva == null)
             throw new NullPointerException("ERROR: No se puede insertar una reserva nula.");
@@ -70,6 +74,7 @@ public class Reservas {
     }
 
 
+    @Override
     public Reserva buscar (Reserva reserva){
         if (reserva == null)
             throw new NullPointerException("ERROR: No se puede buscar una reserva nula.");
@@ -78,6 +83,7 @@ public class Reservas {
         else return null;
     }
 
+    @Override
     public void borrar (Reserva reserva)throws OperationNotSupportedException{
         if (reserva == null)
             throw new NullPointerException("ERROR: No se puede borrar una reserva nula.");
@@ -87,7 +93,7 @@ public class Reservas {
     }
 
 
-
+    @Override
     public ArrayList<Reserva> getReservas (Huesped huesped) {
         if (huesped == null)
             throw new NullPointerException("ERROR: No se pueden buscar reservas de un huesped nulo.");
@@ -107,7 +113,7 @@ public class Reservas {
         return copiaReservaHuesped;
     }
 
-
+    @Override
     public ArrayList<Reserva> getReservas (TipoHabitacion tipoHabitacion) {
         if (tipoHabitacion == null)
             throw new NullPointerException("ERROR: No se pueden buscar reservas de un tipo de habitación nula.");
@@ -129,6 +135,7 @@ public class Reservas {
     /*
     En este caso, como necesitamos obtener las fechas posteriores a las que tenemos, primero inicializamos una variable de tipo LocalDate con el valor de la fecha actual y entonces hacemos lo mismo que antes verificando la fecha actual.
      */
+    @Override
     public ArrayList<Reserva> getReservasFuturas (Habitacion habitacion) {
         if (habitacion == null)
             throw new NullPointerException("ERROR: No se pueden buscar reservas de una habitación nula.");
@@ -149,6 +156,7 @@ public class Reservas {
         return reservasHabitacionFuturas;
     }
 
+    @Override
     public void realizarCheckin(Reserva reserva, LocalDateTime fecha) {
         if (reserva == null | fecha == null)
             throw new NullPointerException("Ni la reserva ni la fecha pueden ser nulas.");
@@ -169,6 +177,7 @@ public class Reservas {
         }*/
     }
 
+    @Override
     public void realizarCheckout(Reserva reserva, LocalDateTime fecha){
         if (reserva == null | fecha == null)
             throw new NullPointerException("Ni la reserva ni la fecha pueden ser nulas.");

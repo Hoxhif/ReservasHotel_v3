@@ -5,9 +5,6 @@ import org.iesalandalus.programacion.reservashotel.modelo.dominio.Habitacion;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Huesped;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Reserva;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.TipoHabitacion;
-import org.iesalandalus.programacion.reservashotel.modelo.negocio.Habitaciones;
-import org.iesalandalus.programacion.reservashotel.modelo.negocio.Huespedes;
-import org.iesalandalus.programacion.reservashotel.modelo.negocio.Reservas;
 import org.iesalandalus.programacion.reservashotel.vista.Vista;
 
 import javax.naming.OperationNotSupportedException;
