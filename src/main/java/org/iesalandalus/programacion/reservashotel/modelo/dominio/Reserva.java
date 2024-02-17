@@ -70,14 +70,15 @@ public class Reserva {
     }
 
     public Habitacion getHabitacion() {
-        return new Habitacion(habitacion);
+        return habitacion;
     }
 
     public void setHabitacion(Habitacion habitacion) {
         if (habitacion==null)
             throw new NullPointerException("ERROR: La habitación de una reserva no puede ser nula.");
+        this.habitacion=habitacion;
 
-        this.habitacion = new Habitacion(habitacion);
+        //this.habitacion = new Habitacion(habitacion);
     }
 
     public Regimen getRegimen() {
@@ -167,7 +168,7 @@ public class Reserva {
     public void setNumeroPersonas(int numeroPersonas) {
         if (numeroPersonas<=0)
             throw new IllegalArgumentException("ERROR: El número de personas de una reserva no puede ser menor o igual a 0.");
-        if (numeroPersonas>habitacion.getTipoHabitacion().getNumeroMaximoPersonas())
+        if (numeroPersonas>habitacion.getNumeroMaximoPersonas())
             throw new IllegalArgumentException("ERROR: El número de personas de una reserva no puede superar al máximo de personas establacidas para el tipo de habitación reservada.");
         this.numeroPersonas = numeroPersonas;
     }
@@ -196,7 +197,7 @@ public class Reserva {
         else checkOutString= getCheckOut().format(DateTimeFormatter.ofPattern(FORMATO_FECHA_HORA_RESERVA));
 
         return String.format("Huesped: %s %s Habitación:%s - %s Fecha Inicio Reserva: %s Fecha Fin Reserva: %s Checkin: %s Checkout: %s Precio: %.2f Personas: %d",getHuesped().getNombre(), getHuesped().getDni(),
-                getHabitacion().getIdentificador(),getHabitacion().getTipoHabitacion(), getFechaInicioReserva().format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),
+                getHabitacion().getIdentificador(),getHabitacion().getClass(), getFechaInicioReserva().format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),
                 getFechaFinReserva().format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)), checkInString,
                 checkOutString, getPrecio(), getNumeroPersonas());
     }

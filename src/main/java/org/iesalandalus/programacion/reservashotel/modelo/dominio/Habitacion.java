@@ -10,10 +10,10 @@ public abstract class Habitacion {
     public static final int MIN_NUMERO_PLANTA=1;
     public static final int MAX_NUMERO_PLANTA=3;
 
-    private String identificador;
-    private int planta;
-    private int puerta;
-    private double precio;
+    protected String identificador;
+    protected int planta;
+    protected int puerta;
+    protected double precio;
 
 
     public Habitacion(int planta, int puerta, double precio){
@@ -46,7 +46,7 @@ public abstract class Habitacion {
         return identificador;
     }
 
-    private void setIdentificador(){
+    protected void setIdentificador(){
         // Al principio no entendía porque había dos metodos para indentificador, y la verdad que hace días cuando hice esta clase hice este algoritmo para calcular el identificador de la habitación
         // Dias despues voy por la clase de array de habitaciones y no se ni porque hice esto, no sirve de nada y daba problemas, me sumaba uno en el identificador, supongo que al no entender porque
         // de esta clase pues hice algo para autoincrementar quizas el valor del mismo, lo dejo igualmente ahí por ahora..
@@ -64,7 +64,7 @@ public abstract class Habitacion {
     }
 
 
-    private void setIdentificador(String identificador) throws NullPointerException, IllegalArgumentException {
+    protected void setIdentificador(String identificador) throws NullPointerException, IllegalArgumentException {
         if (identificador==null)
             throw new NullPointerException("ERROR: El identificador de la habitación no puede ser nulo.");
         if (identificador.isBlank())
@@ -77,7 +77,7 @@ public abstract class Habitacion {
         return planta;
     }
 
-    private void setPlanta(int planta) throws IllegalArgumentException {
+    protected void setPlanta(int planta) throws IllegalArgumentException {
         if (planta<MIN_NUMERO_PLANTA || planta>MAX_NUMERO_PLANTA)
             throw new IllegalArgumentException("ERROR: No se puede establecer como planta de una habitación un valor menor que 1 ni mayor que 3.");
         this.planta = planta;
@@ -87,7 +87,7 @@ public abstract class Habitacion {
         return puerta;
     }
 
-    private void setPuerta(int puerta) throws IllegalArgumentException {
+    protected void setPuerta(int puerta) throws IllegalArgumentException {
         if (puerta<MIN_NUMERO_PUERTA || puerta>MAX_NUMERO_PUERTA)
             throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 0 ni mayor que 14.");
         this.puerta = puerta;
@@ -97,7 +97,7 @@ public abstract class Habitacion {
         return precio;
     }
 
-    public void setPrecio(double precio) throws IllegalArgumentException {
+    protected void setPrecio(double precio) throws IllegalArgumentException {
         if (precio<MIN_PRECIO_HABITACION || precio>MAX_PRECIO_HABITACION)
             throw new IllegalArgumentException("ERROR: No se puede establecer como precio de una habitación un valor menor que 40.0 ni mayor que 150.0.");
         this.precio = precio;
@@ -129,6 +129,6 @@ public abstract class Habitacion {
 
     @Override
     public String toString() {
-        return String.format("identificador=%s (%d-%d), precio habitación=%s, tipo habitación=%s", getIdentificador(), getPlanta(), getPuerta(), getPrecio(),getTipoHabitacion(), getTipoHabitacion().toString());
+        return String.format("identificador=%s (%d-%d), precio habitación=%s, tipo habitación=%s", getIdentificador(), getPlanta(), getPuerta(), getPrecio(),getClass(), getClass().toString());
     }
 }
