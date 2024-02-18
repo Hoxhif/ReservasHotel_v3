@@ -70,13 +70,29 @@ public class Reserva {
     }
 
     public Habitacion getHabitacion() {
-        return habitacion;
+        if (habitacion instanceof Simple)
+            return new Simple((Simple)habitacion);
+        else if (habitacion instanceof Doble)
+            return new Doble((Doble)habitacion);
+        else if (habitacion instanceof Triple)
+            return new Triple((Triple) habitacion);
+        else if (habitacion instanceof Suite)
+            return new Suite((Suite) habitacion);
+        //return new Habitacion(habitacion);
+        else return null;
     }
 
     public void setHabitacion(Habitacion habitacion) {
         if (habitacion==null)
             throw new NullPointerException("ERROR: La habitación de una reserva no puede ser nula.");
-        this.habitacion=habitacion;
+        if (habitacion instanceof Simple)
+            this.habitacion= new Simple((Simple) habitacion);
+        else if (habitacion instanceof Doble)
+            this.habitacion= new Doble((Doble) habitacion);
+        else if (habitacion instanceof Triple)
+            this.habitacion= new Triple((Triple) habitacion);
+        else if (habitacion instanceof Suite)
+            this.habitacion=new Suite((Suite)habitacion);
 
         //this.habitacion = new Habitacion(habitacion);
     }
