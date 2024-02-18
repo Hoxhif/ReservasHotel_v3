@@ -15,7 +15,7 @@ import java.util.*;
 
 public class Reservas implements IReservas {
 
-    ArrayList<Reserva> coleccionReservas= new ArrayList<Reserva>();
+    private ArrayList<Reserva> coleccionReservas= new ArrayList<Reserva>();
 
     public Reservas (){
 

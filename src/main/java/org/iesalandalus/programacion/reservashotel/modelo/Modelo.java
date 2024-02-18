@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class Modelo {
 
     // Aquí hemos copiado y pegado
-    public static Habitaciones habitaciones;
-    public static Reservas reservas;
-    public static Huespedes huespedes;
+    private static Habitaciones habitaciones;
+    private static Reservas reservas;
+    private static Huespedes huespedes;
 
 
     public Modelo(){

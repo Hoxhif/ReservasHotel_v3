@@ -12,7 +12,7 @@ import java.util.*;
 
 public class Huespedes implements IHuespedes {
 
-    ArrayList<Huesped> coleccionHuespedes= new ArrayList<>();
+    private ArrayList<Huesped> coleccionHuespedes= new ArrayList<>();
     public Huespedes(){
 
 
