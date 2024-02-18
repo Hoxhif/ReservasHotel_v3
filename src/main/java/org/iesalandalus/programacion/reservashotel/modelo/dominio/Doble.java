@@ -54,9 +54,8 @@ public class Doble extends Habitacion{
 
     @Override
     public String toString() {
-        return String.format("identificador=%s (%d-%d), precio habitación=%s, habitación doble, capacidad=%d personas, " +
+        return String.format(super.toString()+", habitación doble, capacidad=%d personas, " +
                         "camas individuales=%d, camas dobles=%d",
-                getIdentificador(), getPlanta(), getPuerta(), getPrecio(),
                 getNumeroMaximoPersonas(),getNumCamasIndividuales(),getNumCamasDobles());
     }
 }

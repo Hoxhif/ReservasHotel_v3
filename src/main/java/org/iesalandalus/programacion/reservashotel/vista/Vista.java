@@ -2,10 +2,7 @@ package org.iesalandalus.programacion.reservashotel.vista;
 
 import org.iesalandalus.programacion.reservashotel.controlador.Controlador;
 import org.iesalandalus.programacion.reservashotel.modelo.Modelo;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.Habitacion;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.Huesped;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.Reserva;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.TipoHabitacion;
+import org.iesalandalus.programacion.reservashotel.modelo.dominio.*;
 import org.iesalandalus.programacion.reservashotel.modelo.negocio.memoria.Habitaciones;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
@@ -35,7 +32,6 @@ public class Vista {
         do {
             Consola.mostrarMenu();
             opcion = Consola.elegirOpcion();
-            ejecutarOpcion(opcion);
         } while (opcion != Opcion.SALIR);
         terminar();
     }
@@ -246,24 +242,30 @@ public class Vista {
     }
 
     public void insertarReserva(){
-        try{
+        try {
             Reserva nuevaReserva = Consola.leerReserva();
-            Huesped huesped=null;
-            Habitacion habitacion=null;
-            for (Huesped huespedes: controlador.getHuespedes()){
-                if (huespedes.getDni().equals(nuevaReserva.getHuesped().getDni())){
-                    huesped=huespedes;
+            Huesped huesped = null;
+            Habitacion habitacion = null;
+            for (Huesped huespedes : controlador.getHuespedes()) {
+                if (huespedes.getDni().equals(nuevaReserva.getHuesped().getDni())) {
+                    huesped = huespedes;
                 }
             }
-            for (Habitacion habitaciones: controlador.getHabitaciones()){
-                if (habitaciones.getIdentificador().equals(nuevaReserva.getHabitacion().getIdentificador())){
-                    habitacion=habitaciones;
+
+            for (Habitacion habitaciones : controlador.getHabitaciones()) {
+                if (habitaciones.getIdentificador().equals(nuevaReserva.getHabitacion().getIdentificador())) {
+                    habitacion = habitaciones;
                 }
             }
-            Reserva reservaReal= new Reserva(huesped,habitacion,nuevaReserva.getRegimen(),nuevaReserva.getFechaInicioReserva(),nuevaReserva.getFechaFinReserva(),nuevaReserva.getNumeroPersonas() );
+
+            // ESTO ESTA SUJETO A CAMBIOS.
+
+
+            if (habitacion instanceof Simple) {
+                Reserva reservaReal = new Reserva(huesped, habitacion, nuevaReserva.getRegimen(), nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva(), nuevaReserva.getNumeroPersonas());
                 if (nuevaReserva != null) {
                     if (getNumElementosNoNulos(controlador.getReservas()) > 0) { //CAMBIAR LENGTH POR ELEMENTOSNONULOS.
-                        Habitacion habitacionDisponible = consultarDisponibilidad(nuevaReserva.getHabitacion().getTipoHabitacion(), nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva());
+                        Habitacion habitacionDisponible = consultarDisponibilidad(TipoHabitacion.SIMPLE, nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva());
                         if (habitacionDisponible != null) {
                             controlador.insertar(reservaReal);
                             System.out.println("Reserva creada satisfactoriamente");
@@ -277,6 +279,62 @@ public class Vista {
                     }
                 }
             }
+            if (habitacion instanceof Doble){
+                Reserva reservaReal = new Reserva(huesped, habitacion, nuevaReserva.getRegimen(), nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva(), nuevaReserva.getNumeroPersonas());
+                if (nuevaReserva != null) {
+                    if (getNumElementosNoNulos(controlador.getReservas()) > 0) { //CAMBIAR LENGTH POR ELEMENTOSNONULOS.
+                        Habitacion habitacionDisponible = consultarDisponibilidad(TipoHabitacion.DOBLE, nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva());
+                        if (habitacionDisponible != null) {
+                            controlador.insertar(reservaReal);
+                            System.out.println("Reserva creada satisfactoriamente");
+                        } else
+                            System.out.println("No se puede realizar la reserva en esas fechas. No se encuentra disponible la habitaci�n");
+                    } else {
+                        if (nuevaReserva.getHabitacion() != null) {
+                            controlador.insertar(reservaReal);
+                            System.out.println("Reserva creada satisfactoriamente");
+                        }
+                    }
+                }
+            }
+            if (habitacion instanceof Triple){
+                Reserva reservaReal = new Reserva(huesped, habitacion, nuevaReserva.getRegimen(), nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva(), nuevaReserva.getNumeroPersonas());
+                if (nuevaReserva != null) {
+                    if (getNumElementosNoNulos(controlador.getReservas()) > 0) { //CAMBIAR LENGTH POR ELEMENTOSNONULOS.
+                        Habitacion habitacionDisponible = consultarDisponibilidad(TipoHabitacion.TRIPLE, nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva());
+                        if (habitacionDisponible != null) {
+                            controlador.insertar(reservaReal);
+                            System.out.println("Reserva creada satisfactoriamente");
+                        } else
+                            System.out.println("No se puede realizar la reserva en esas fechas. No se encuentra disponible la habitaci�n");
+                    } else {
+                        if (nuevaReserva.getHabitacion() != null) {
+                            controlador.insertar(reservaReal);
+                            System.out.println("Reserva creada satisfactoriamente");
+                        }
+                    }
+                }
+            }
+            if (habitacion instanceof Suite){
+                Reserva reservaReal = new Reserva(huesped, habitacion, nuevaReserva.getRegimen(), nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva(), nuevaReserva.getNumeroPersonas());
+                if (nuevaReserva != null) {
+                    if (getNumElementosNoNulos(controlador.getReservas()) > 0) { //CAMBIAR LENGTH POR ELEMENTOSNONULOS.
+                        Habitacion habitacionDisponible = consultarDisponibilidad(TipoHabitacion.SUITE, nuevaReserva.getFechaInicioReserva(), nuevaReserva.getFechaFinReserva());
+                        if (habitacionDisponible != null) {
+                            controlador.insertar(reservaReal);
+                            System.out.println("Reserva creada satisfactoriamente");
+                        } else
+                            System.out.println("No se puede realizar la reserva en esas fechas. No se encuentra disponible la habitaci�n");
+                    } else {
+                        if (nuevaReserva.getHabitacion() != null) {
+                            controlador.insertar(reservaReal);
+                            System.out.println("Reserva creada satisfactoriamente");
+                        }
+                    }
+                }
+            }
+
+        }
             //else System.out.println("No se puede añadir una reserva con datos nulos.");
         catch (OperationNotSupportedException | NullPointerException | IllegalArgumentException e){
             System.out.println("-"+e.getMessage());
@@ -350,17 +408,37 @@ public class Vista {
     public void comprobarDisponibilidad(){
         try {
             Habitacion habitacion = Consola.leerHabitacionPorIdentificador();
-            if (habitacion instanceof )
-                if (habitacion==null){
-                    System.out.println("La habitación no existe.");
-                    break;
-                }
-            Habitacion comprobarHabitacion = consultarDisponibilidad(habitacion.getTipoHabitacion, Consola.leerFecha("Inserte la fecha de posible reserva: "), Consola.leerFecha("Inserte la fecha de posible fin reserva: "));
-            if (comprobarHabitacion == null)
-                System.out.println("La habitación estará ocupada en esas fechas.");
-            else if (comprobarHabitacion != null)
-                System.out.println("La habitación está disponible en esas fechas.");
-            break;
+            if (habitacion==null){
+                System.out.println("La habitación no existe.");
+            }
+            if (habitacion instanceof Simple){
+                Habitacion comprobarHabitacion = consultarDisponibilidad(TipoHabitacion.SIMPLE, Consola.leerFecha("Inserte la fecha de posible reserva: "), Consola.leerFecha("Inserte la fecha de posible fin reserva: "));
+                if (comprobarHabitacion == null)
+                    System.out.println("La habitación estará ocupada en esas fechas.");
+                else if (comprobarHabitacion != null)
+                    System.out.println("La habitación está disponible en esas fechas.");
+            }
+            else if (habitacion instanceof Doble){
+                Habitacion comprobarHabitacion = consultarDisponibilidad(TipoHabitacion.DOBLE, Consola.leerFecha("Inserte la fecha de posible reserva: "), Consola.leerFecha("Inserte la fecha de posible fin reserva: "));
+                if (comprobarHabitacion == null)
+                    System.out.println("La habitación estará ocupada en esas fechas.");
+                else if (comprobarHabitacion != null)
+                    System.out.println("La habitación está disponible en esas fechas.");
+            }
+            else if (habitacion instanceof Triple){
+                Habitacion comprobarHabitacion = consultarDisponibilidad(TipoHabitacion.TRIPLE, Consola.leerFecha("Inserte la fecha de posible reserva: "), Consola.leerFecha("Inserte la fecha de posible fin reserva: "));
+                if (comprobarHabitacion == null)
+                    System.out.println("La habitación estará ocupada en esas fechas.");
+                else if (comprobarHabitacion != null)
+                    System.out.println("La habitación está disponible en esas fechas.");
+            }
+            else if (habitacion instanceof Suite){
+                Habitacion comprobarHabitacion = consultarDisponibilidad(TipoHabitacion.SUITE, Consola.leerFecha("Inserte la fecha de posible reserva: "), Consola.leerFecha("Inserte la fecha de posible fin reserva: "));
+                if (comprobarHabitacion == null)
+                    System.out.println("La habitación estará ocupada en esas fechas.");
+                else if (comprobarHabitacion != null)
+                    System.out.println("La habitación está disponible en esas fechas.");
+            }
 
         } catch (NullPointerException e) {
             System.out.println("-"+e.getMessage());

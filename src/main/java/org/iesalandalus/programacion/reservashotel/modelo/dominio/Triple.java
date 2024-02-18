@@ -70,9 +70,8 @@ public class Triple extends Habitacion{
 
     @Override
     public String toString() {
-        return String.format("identificador=%s (%d-%d), precio habitación=%s, habitación triple, capacidad=%d personas, " +
+        return String.format(super.toString()+", habitación triple, capacidad=%d personas, " +
                         "baños=%d, camas individuales=%d, camas dobles=%d",
-                getIdentificador(), getPlanta(), getPuerta(), getPrecio(),
                 getNumeroMaximoPersonas(),getNumBanos(),getNumCamasIndividuales(),getNumCamasDobles());
     }
 }

@@ -45,9 +45,12 @@ public class Suite extends Habitacion{
 
     @Override
     public String toString() {
-        return String.format("identificador=%s (%d-%d), precio habitación=%s, habitación suite, capacidad=%d personas, " +
+        if (!isTieneJacuzzi())
+            return String.format(super.toString()+", habitación suite, capacidad=%d personas, " +
                         "baños=%d, sin Jacuzzi",
-                getIdentificador(), getPlanta(), getPuerta(), getPrecio(),
+                getNumeroMaximoPersonas(),getNumBanos());
+        else return String.format(super.toString()+", habitación suite, capacidad=%d personas, " +
+                        "baños=%d, con Jacuzzi",
                 getNumeroMaximoPersonas(),getNumBanos());
     }
 }

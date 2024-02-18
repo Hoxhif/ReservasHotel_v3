@@ -129,6 +129,6 @@ public abstract class Habitacion {
 
     @Override
     public String toString() {
-        return String.format("identificador=%s (%d-%d), precio habitación=%s, tipo habitación=%s", getIdentificador(), getPlanta(), getPuerta(), getPrecio(),getClass(), getClass().toString());
+        return String.format("identificador=%s (%d-%d), precio habitación=%s", getIdentificador(), getPlanta(), getPuerta());
     }
 }
