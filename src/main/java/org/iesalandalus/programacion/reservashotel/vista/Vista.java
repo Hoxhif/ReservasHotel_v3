@@ -275,6 +275,14 @@ public class Vista {
             System.out.println("-"+e.getMessage());
         }}
 
+    public void mostrarReservasHuesped(){
+        try {
+            listarReservas(Consola.getClientePorDni());
+        }catch(NullPointerException | IllegalArgumentException e){
+            System.out.println("- " + e.getMessage());
+        }
+    }
+
 
 
     private void listarReservas(Huesped huesped){
@@ -307,6 +315,13 @@ public class Vista {
         }
     }
 
+    public void mostrarReservasTipoHabitacion(){
+        try {
+            listarReservas(Consola.leerTipoHabitacion());
+        }catch(NullPointerException | IllegalArgumentException e){
+            System.out.println("- "+ e.getMessage());
+        }
+    }
 
     private void listarReservas (TipoHabitacion tipoHabitacion){
 
@@ -430,17 +445,12 @@ public class Vista {
                     }*/
                     break;
                 case 2:
-                    try{
-                        listarReservas(Consola.getClientePorDni());}catch (NullPointerException e){
-                        System.out.println("-"+e.getMessage());
-                    }
+                        mostrarReservasHuesped();
+
                     break;
                 case 3:
-                    try {
-                        listarReservas(Consola.leerTipoHabitacion());
-                    }catch (NullPointerException e){
-                        System.out.println("-"+e.getMessage());
-                    }
+                        mostrarReservasTipoHabitacion();
+                    break;
             }
         }
     }
