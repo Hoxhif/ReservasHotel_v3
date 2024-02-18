@@ -189,7 +189,13 @@ public class Consola {
         System.out.println("Indique el tipo de habitación: ");
         TipoHabitacion tipo = leerTipoHabitacion();
         try {
-            return new Habitacion(numeroPlanta, numeroPuerta, precio, tipo);
+            switch (tipo) {
+                case SIMPLE: return new Simple(numeroPlanta, numeroPuerta, precio);
+                case DOBLE:
+                    System.out.println("Inserte el número de camas individuales: ");
+                    return new Doble(numeroPlanta,numeroPuerta,precio,)
+                //return new Habitacion(numeroPlanta, numeroPuerta, precio, tipo);
+            }
         }catch (NullPointerException | IllegalArgumentException e){
             System.out.println("-"+e.getMessage());
             return null;
@@ -241,7 +247,7 @@ public class Consola {
                 Habitacion habitacion = iteradorHabitacion.next();
                 if (habitacion.getIdentificador().equals(combinacion))*/
 
-                    return new Habitacion(numPlanta,numPuerta,140,TipoHabitacion.SIMPLE);
+                    return new Habitacion(numPlanta,numPuerta,140);
 
             /*for (Habitacion habitacionCorrespondiente: habitaciones.get()){
                 if (habitacionCorrespondiente.getIdentificador().equals(combinacion))
@@ -310,10 +316,10 @@ public class Consola {
             do {
                 System.out.println("Indique el número de personas en la reserva: ");
                 numPersonas = Entrada.entero();
-                if (numPersonas <= 0 || numPersonas > habitacion.getTipoHabitacion().getNumeroMaximoPersonas()) {
+                if (numPersonas <= 0 || numPersonas > habitacion.getNumeroMaximoPersonas()) {
                     System.out.println("No se admite esa cantidad de personas en la habitación.");
                 }
-            }while(numPersonas<=0 || numPersonas>habitacion.getTipoHabitacion().getNumeroMaximoPersonas());
+            }while(numPersonas<=0 || numPersonas>habitacion.getNumeroMaximoPersonas());
 
         try {
             return new Reserva(huesped, habitacion, regimen, leerFecha("Inserte la fecha de inicio de reserva: "), leerFecha("Inserte la fecha de fin de reserva: "), numPersonas);

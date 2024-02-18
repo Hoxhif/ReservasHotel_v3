@@ -1,9 +1,7 @@
 package org.iesalandalus.programacion.reservashotel.modelo.negocio.memoria;
 
 
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.Habitacion;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.Huesped;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.TipoHabitacion;
+import org.iesalandalus.programacion.reservashotel.modelo.dominio.*;
 import org.iesalandalus.programacion.reservashotel.modelo.negocio.IHabitaciones;
 
 import javax.naming.OperationNotSupportedException;
@@ -41,38 +39,54 @@ public class Habitaciones implements IHabitaciones {
     }*/
     @Override
     public ArrayList<Habitacion> get(){
-        return copiaProfundaHabitaciones();
-    }
-
-    // Ahora ya no se usa private Habitacion[] por que ya no queremos devolver un array, sino un Arraylist.
-    private ArrayList<Habitacion> copiaProfundaHabitaciones(){
-    // Este era el método implementado en Array normal
-        /*int j=0;
-        Habitacion[] copiaHabitaciones = new Habitacion[capacidad];
-        for (int i = 0; i < capacidad; i++) {
-            if (coleccionHabitaciones[i] != null) {
-                copiaHabitaciones[j++] = new Habitacion(coleccionHabitaciones[i]);
-            }
-
-        }return Arrays.copyOf(copiaHabitaciones, j);*/
         ArrayList<Habitacion> copiaHabitaciones= new ArrayList<Habitacion>();
-         //copiaHabitaciones.addAll(coleccionHabitaciones);
-        /*for (Habitacion habitacion: coleccionHabitaciones){
-            copiaHabitaciones.add(habitacion);
-        }*/
-
-        //Esta hubiera sido otra manera de hacerlo.
-        //copiaHabitaciones.addAll(coleccionHabitaciones);
+        Habitacion habitacion;
 
         Iterator<Habitacion> habitacionIterator= coleccionHabitaciones.iterator();
         while (habitacionIterator.hasNext()){
-            Habitacion habitacion= new Habitacion(habitacionIterator.next());
-            copiaHabitaciones.add(habitacion);
+            //Habitacion habitacion= new Habitacion(habitacionIterator.next());
+            habitacion= habitacionIterator.next();
+            if (habitacion instanceof Simple)
+                //Hacemos uso de un casting para convertir la habitación en un simple.
+                copiaHabitaciones.add(new Simple((Simple)habitacion));
+            else if (habitacion instanceof Doble)
+                copiaHabitaciones.add(new Doble((Doble)habitacion));
+            else if (habitacion instanceof Triple)
+                copiaHabitaciones.add(new Triple((Triple) habitacion));
+            else if (habitacion instanceof Suite)
+                copiaHabitaciones.add(new Suite((Suite) habitacion));
         }
         // Había usado reversed al principio porque pensaba que iría de mas a menos, pero parece ser que no, que va de menos a mas por defecto.
         Collections.sort(copiaHabitaciones, Comparator.comparing(Habitacion::getIdentificador));
         return copiaHabitaciones;
+
     }
+
+    // Ahora ya no se usa private Habitacion[] por que ya no queremos devolver un array, sino un Arraylist.
+ /*   private ArrayList<Habitacion> copiaProfundaHabitaciones(){
+
+        ArrayList<Habitacion> copiaHabitaciones= new ArrayList<Habitacion>();
+        Habitacion habitacion;
+
+        Iterator<Habitacion> habitacionIterator= coleccionHabitaciones.iterator();
+        while (habitacionIterator.hasNext()){
+            //Habitacion habitacion= new Habitacion(habitacionIterator.next());
+            habitacion= habitacionIterator.next();
+            if (habitacion instanceof Simple)
+                //Hacemos uso de un casting para convertir la habitación en un simple.
+                copiaHabitaciones.add(new Simple((Simple)habitacion));
+            else if (habitacion instanceof Doble)
+                copiaHabitaciones.add(new Doble((Doble)habitacion));
+            else if (habitacion instanceof Triple)
+                copiaHabitaciones.add(new Triple((Triple) habitacion));
+            else if (habitacion instanceof Suite)
+                copiaHabitaciones.add(new Suite((Suite) habitacion));
+        }
+        // Había usado reversed al principio porque pensaba que iría de mas a menos, pero parece ser que no, que va de menos a mas por defecto.
+        Collections.sort(copiaHabitaciones, Comparator.comparing(Habitacion::getIdentificador));
+        return copiaHabitaciones;
+    }*/
+
     @Override
     public ArrayList<Habitacion> get(TipoHabitacion tipoHabitacion){
 

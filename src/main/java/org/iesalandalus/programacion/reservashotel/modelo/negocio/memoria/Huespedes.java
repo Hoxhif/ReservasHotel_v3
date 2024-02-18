@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.reservashotel.modelo.negocio.memoria;
 
+import org.iesalandalus.programacion.reservashotel.modelo.dominio.Habitacion;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Huesped;
 import org.iesalandalus.programacion.reservashotel.modelo.dominio.Reserva;
 import org.iesalandalus.programacion.reservashotel.modelo.negocio.IHuespedes;
@@ -17,17 +18,29 @@ public class Huespedes implements IHuespedes {
 
     }
 
+
     @Override
     public ArrayList<Huesped> get() {
-        return copiaProfundaHuespedes();
+        ArrayList<Huesped> copiaHuespedes= new ArrayList<Huesped>();
+        for (Huesped huesped: coleccionHuespedes){
+            copiaHuespedes.add(huesped);
+        }
+
+        Iterator<Huesped> iteradorHuesped= coleccionHuespedes.iterator();
+
+        while(iteradorHuesped.hasNext()){
+            Huesped huesped= new Huesped(iteradorHuesped.next());
+            copiaHuespedes.add(huesped);
+        }
+        return copiaHuespedes;
     }
 
-    private ArrayList<Huesped> copiaProfundaHuespedes() {
+   /* private ArrayList<Huesped> copiaProfundaHuespedes() {
 
         ArrayList<Huesped> copiaHuespedes= new ArrayList<Huesped>();
-        /*for (Huesped huesped: coleccionHuespedes){
+        for (Huesped huesped: coleccionHuespedes){
             copiaHuespedes.add(huesped);
-        }*/
+        }
 
         Iterator<Huesped> iteradorHuesped= coleccionHuespedes.iterator();
 
@@ -40,7 +53,7 @@ public class Huespedes implements IHuespedes {
         //Collections.sort(copiaHuespedes, Comparator.comparing(Huesped::getNombre));
 
         return copiaHuespedes;
-    }
+    }*/
 
 
     @Override
