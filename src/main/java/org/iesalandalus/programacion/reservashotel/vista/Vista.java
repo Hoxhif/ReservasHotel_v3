@@ -32,6 +32,7 @@ public class Vista {
         do {
             Consola.mostrarMenu();
             opcion = Consola.elegirOpcion();
+            opcion.ejecutar();
         } while (opcion != Opcion.SALIR);
         terminar();
     }

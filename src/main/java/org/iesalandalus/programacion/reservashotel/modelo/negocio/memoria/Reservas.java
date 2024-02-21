@@ -2,10 +2,7 @@ package org.iesalandalus.programacion.reservashotel.modelo.negocio.memoria;
 
 
 
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.Habitacion;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.Huesped;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.Reserva;
-import org.iesalandalus.programacion.reservashotel.modelo.dominio.TipoHabitacion;
+import org.iesalandalus.programacion.reservashotel.modelo.dominio.*;
 import org.iesalandalus.programacion.reservashotel.modelo.negocio.IReservas;
 
 import javax.naming.OperationNotSupportedException;
@@ -146,15 +143,23 @@ public class Reservas implements IReservas {
         Iterator<Reserva> iteratorReserva= get().iterator();
         while (iteratorReserva.hasNext()){
             Reserva reserva= iteratorReserva.next();
-            if (reserva.getHabitacion().equals(tipoHabitacion))
+            if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("simple")){
+                copiaReservaTipoHabitacion.add(reserva);
+            }
+            else if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("doble"))
+                copiaReservaTipoHabitacion.add(reserva);
+            else if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("triple"))
+                copiaReservaTipoHabitacion.add(reserva);
+            else if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("suite"))
                 copiaReservaTipoHabitacion.add(reserva);
         }
-        /*for (Reserva reserva: get()){
-            if (reserva.getHabitacion().getTipoHabitacion().equals(tipoHabitacion))
-                copiaReservaTipoHabitacion.add(reserva);
-        }*/
+            /*
+            }
+            if (tipoHabitacion.getClass().isInstance(reserva.getHabitacion()))
+                copiaReservaTipoHabitacion.add(reserva); */
 
         return copiaReservaTipoHabitacion;
+
     }
 
     /*
