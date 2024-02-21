@@ -121,7 +121,7 @@ public class Reservas implements IReservas {
     @Override
     public ArrayList<Reserva> getReservas (Huesped huesped) {
         if (huesped == null)
-            throw new NullPointerException("ERROR: No se pueden buscar reservas de un huesped nulo.");
+            throw new NullPointerException("ERROR: No se pueden buscar reservas de un huésped nulo.");
 
         ArrayList<Reserva> copiaReservaHuesped= new ArrayList<>();
         Iterator<Reserva> iteratorReserva= get().iterator();

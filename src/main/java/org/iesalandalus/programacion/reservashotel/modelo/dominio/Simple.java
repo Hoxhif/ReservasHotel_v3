@@ -1,14 +1,20 @@
 package org.iesalandalus.programacion.reservashotel.modelo.dominio;
 
 public class Simple extends Habitacion{
-    private final int NUM_MAXIMO_PERSONAS=1;
+    private static final int NUM_MAXIMO_PERSONAS=1;
 
     public Simple(int planta, int puerta, double precio){
         super (planta, puerta,precio);
     }
 
     public Simple (Simple habitacionSimple){
-        super(habitacionSimple.getPlanta(), habitacionSimple.getPuerta(), habitacionSimple.getPrecio());
+        super(habitacionSimple);
+        //super(habitacionSimple.getPlanta(), habitacionSimple.getPuerta(), habitacionSimple.getPrecio());
+           /* if (habitacionSimple == null)
+                throw new NullPointerException("ERROR: No es posible copiar una habitación nula.");
+            super.setPlanta(habitacionSimple.getPlanta());
+            super.setPuerta(habitacionSimple.getPuerta());
+            super.setPrecio(habitacionSimple.getPrecio());*/
     }
 
     @Override
@@ -18,7 +24,7 @@ public class Simple extends Habitacion{
 
     @Override
     public String toString() {
-        return String.format(super.toString()+", habitación simple, capacidad=%d personas",
+        return super.toString() + String.format(", habitación simple, capacidad=%d personas",
                 getNumeroMaximoPersonas());
     }
 }

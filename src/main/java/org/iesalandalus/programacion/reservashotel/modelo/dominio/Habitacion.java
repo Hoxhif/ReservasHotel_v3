@@ -15,6 +15,9 @@ public abstract class Habitacion {
     protected int puerta;
     protected double precio;
 
+    /*public Habitacion(){
+
+    }*/
 
     public Habitacion(int planta, int puerta, double precio){
         setPlanta(planta);
@@ -129,6 +132,6 @@ public abstract class Habitacion {
 
     @Override
     public String toString() {
-        return String.format("identificador=%s (%d-%d), precio habitación=%s", getIdentificador(), getPlanta(), getPuerta());
+        return String.format("identificador=%s (%d-%d), precio habitación=%s", getIdentificador(), getPlanta(), getPuerta(), getPrecio());
     }
 }
