@@ -22,9 +22,6 @@ public class Huespedes implements IHuespedes {
     @Override
     public ArrayList<Huesped> get() {
         ArrayList<Huesped> copiaHuespedes= new ArrayList<Huesped>();
-        for (Huesped huesped: coleccionHuespedes){
-            copiaHuespedes.add(huesped);
-        }
 
         Iterator<Huesped> iteradorHuesped= coleccionHuespedes.iterator();
 

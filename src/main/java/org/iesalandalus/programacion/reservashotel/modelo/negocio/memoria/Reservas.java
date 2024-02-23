@@ -143,7 +143,18 @@ public class Reservas implements IReservas {
         Iterator<Reserva> iteratorReserva= get().iterator();
         while (iteratorReserva.hasNext()){
             Reserva reserva= iteratorReserva.next();
-            if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("simple")){
+            switch (tipoHabitacion){
+                case SIMPLE:
+                    if (reserva.getHabitacion() instanceof Simple) copiaReservaTipoHabitacion.add(reserva);
+                case DOBLE:
+                    if (reserva.getHabitacion() instanceof Doble) copiaReservaTipoHabitacion.add(reserva);
+                case TRIPLE:
+                    if (reserva.getHabitacion() instanceof Triple) copiaReservaTipoHabitacion.add(reserva);
+                case SUITE:
+                    if (reserva.getHabitacion() instanceof Suite) copiaReservaTipoHabitacion.add(reserva);
+            }
+
+            /*if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("simple")){
                 copiaReservaTipoHabitacion.add(reserva);
             }
             else if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("doble"))
@@ -151,7 +162,7 @@ public class Reservas implements IReservas {
             else if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("triple"))
                 copiaReservaTipoHabitacion.add(reserva);
             else if (reserva.getHabitacion().getClass().getName().equalsIgnoreCase("suite"))
-                copiaReservaTipoHabitacion.add(reserva);
+                copiaReservaTipoHabitacion.add(reserva);*/
         }
             /*
             }

@@ -195,7 +195,10 @@ public class Consola {
         TipoHabitacion tipo = leerTipoHabitacion();
         try {
             switch (tipo) {
-                case SIMPLE: return new Simple(numeroPlanta, numeroPuerta, precio);
+                case SIMPLE:try{ return new Simple(numeroPlanta, numeroPuerta, precio); }catch(NullPointerException | IllegalArgumentException e){
+                    System.out.println("-"+e.getMessage());
+                    break;
+                }
                 case DOBLE:
                     /*do {
                         System.out.println("Inserte el número de camas individuales: ");
@@ -218,6 +221,7 @@ public class Consola {
                         return new Doble(numeroPlanta, numeroPuerta, precio, numCamasIndividuales, numCamasDobles);
                     }catch (NullPointerException | IllegalArgumentException e){
                         System.out.println("-"+e.getMessage());
+                        break;
                     }
                 case TRIPLE:
                     /*do {
@@ -248,6 +252,7 @@ public class Consola {
                         return new Triple(numeroPlanta, numeroPuerta, precio, numBanos, numCamasIndividuales, numCamasDobles);
                     }catch(NullPointerException | IllegalArgumentException e){
                         System.out.println("-"+e.getMessage());
+                        break;
                     }
                 case SUITE:
                     /*do {
@@ -280,24 +285,22 @@ public class Consola {
                     try {
                         System.out.println("Inserte la cantidad de baños en la habitación: ");
                         numBanos = Entrada.entero();
-                        System.out.println("¿Dispone la habitación de Jacuzzi?:  (S/N)");
-                        respuesta = Entrada.caracter();
                         do {
                             System.out.println("¿Dispone la habitación de Jacuzzi?:  (S/N)");
                             respuesta = Entrada.caracter();
-                            if (respuesta != 'N' || respuesta != 'S') System.out.println("La respuesta debe ser S o N");
-                        } while (respuesta != 'N' || respuesta != 'S');
+                            if (respuesta != 'N' && respuesta != 'S') System.out.println("La respuesta debe ser S o N");
+                        } while (respuesta != 'N' && respuesta != 'S');
                         if (respuesta == 'S') jacuzzi = true;
                         else jacuzzi = false;
                         return new Suite(numeroPlanta, numeroPuerta, precio, numBanos, jacuzzi);
                     }catch (NullPointerException | IllegalArgumentException e){
                         System.out.println("-"+e.getMessage());
+                        break;
                     }
 
             }
         }catch (NullPointerException | IllegalArgumentException e){
             System.out.println("-"+e.getMessage());
-
         }
         /*
         do {
