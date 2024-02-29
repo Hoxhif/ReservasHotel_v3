@@ -111,26 +111,7 @@ public class Consola {
     }
 
     public static LocalDate leerFecha(String mensaje){
-        // En este método tampoco supe bien que habia realmente que hacer, asi que lo que hice fue pasar el tipo String de fecha que preguntamos al crear el huesped y lo convertimos en LocalDate
-        // haciendo un return de el array separado por el "-" pasado a entero y luego ese valor se lo asignamos a la fecha de nacimiento del huesped.
-        /*String fecha;
 
-        do{
-            System.out.println(mensaje);
-            fecha = Entrada.cadena();
-            if (!fecha.matches("\\d{2}/\\d{2}/\\d{4}")) { //he tenido que usar esto en vez de dd/MM/yyyy para poder usar el matches, según en un foro, no se puede usar el matches con dd/MM/yyyy porque no entiende el matches el pattern de esa manera.
-                System.out.println("La fecha introducida tiene un formato incorrecto (Usar dd/MM/yyyy)");
-                fecha=null;
-            }
-        }while (fecha==null);
-        String fechaConvertida [] = fecha.split("/");
-
-        LocalDate fechaFinal = LocalDate.of(Integer.parseInt(fechaConvertida[2]), Integer.parseInt(fechaConvertida[1]), Integer.parseInt(fechaConvertida[0]));
-        if (fechaFinal.isLeapYear()){
-            return fechaFinal;
-        }
-        return fechaFinal;
-        // Este método lo he obtenido a través de chatGPT porque tengo un problema que no supe solucionar con el hecho de que es un año bisiesto y me da un error cuando crea una reserva.*/
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fecha = null;
 
