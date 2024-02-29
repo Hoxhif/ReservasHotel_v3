@@ -50,7 +50,8 @@ public class Doble extends Habitacion{
             throw new IllegalArgumentException("ERROR: El número de camas individuales de una habitación doble no puede ser inferior a 1 ni mayor que 2");
         if (getNumCamasDobles()<MIN_NUM_CAMAS_DOBLES || getNumCamasDobles()>MAX_NUM_CAMAS_DOBLES)
             throw new IllegalArgumentException("ERROR: El número de camas dobles de una habitación doble no puede ser inferior a 0 ni mayor que 1");
-
+        if (getNumCamasIndividuales() == 2 && getNumCamasDobles() == 1 || getNumCamasIndividuales()== 1 && getNumCamasDobles() == 0 || getNumCamasIndividuales() == 1 && getNumCamasDobles() == 1)
+            throw new IllegalArgumentException("ERROR: La distribución de camas en una habitación doble tiene que ser 2 camas individuales y 0 doble o 1 camas individuales y 1 doble");
     }
 
     @Override

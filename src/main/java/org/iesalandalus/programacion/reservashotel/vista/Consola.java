@@ -200,19 +200,7 @@ public class Consola {
                     break;
                 }
                 case DOBLE:
-                    /*do {
-                        System.out.println("Inserte el número de camas individuales: ");
-                        numCamasIndividuales= Entrada.entero();
-                        if (numCamasIndividuales<Doble.MIN_NUM_CAMAS_INDIVIDUALES || numCamasIndividuales>Doble.MAX_NUM_CAMAS_INDIVIDUALES)
-                            System.out.println("No se ha introducido una cantidad correcta.");
-                    }while (numCamasIndividuales<Doble.MIN_NUM_CAMAS_INDIVIDUALES || numCamasIndividuales>Doble.MAX_NUM_CAMAS_INDIVIDUALES);
-                    do{
-                        System.out.println("Inserte el número de camas dobles: ");
-                        numCamasDobles = Entrada.entero();
-                        if (numCamasDobles<Doble.MIN_NUM_CAMAS_DOBLES || numCamasDobles>Doble.MAX_NUM_CAMAS_DOBLES)
-                            System.out.println("No se ha introducido una cantidad correcta,");
-                    }while (numCamasDobles<Doble.MIN_NUM_CAMAS_DOBLES || numCamasDobles>Doble.MAX_NUM_CAMAS_DOBLES);
-                    return new Doble(numeroPlanta,numeroPuerta,precio,numCamasIndividuales, numCamasDobles);*/
+
                     try {
                         System.out.println("Inserte el número de camas individuales: ");
                         numCamasIndividuales = Entrada.entero();
@@ -224,24 +212,7 @@ public class Consola {
                         break;
                     }
                 case TRIPLE:
-                    /*do {
-                        System.out.println("Inserte el número de camas individuales: ");
-                        numCamasIndividuales= Entrada.entero();
-                        if (numCamasIndividuales<Triple.MIN_NUM_CAMAS_INDIVIDUALES || numCamasIndividuales>Triple.MAX_NUM_CAMAS_INDIVIDUALES)
-                            System.out.println("No se ha introducido una cantidad correcta.");
-                    }while (numCamasIndividuales<Triple.MIN_NUM_CAMAS_INDIVIDUALES || numCamasIndividuales>Triple.MAX_NUM_CAMAS_INDIVIDUALES);
-                    do{
-                        System.out.println("Inserte el número de camas dobles: ");
-                        numCamasDobles = Entrada.entero();
-                        if (numCamasDobles<Triple.MIN_NUM_CAMAS_DOBLES || numCamasDobles>Triple.MAX_NUM_CAMAS_DOBLES)
-                            System.out.println("No se ha introducido una cantidad correcta,");
-                    }while (numCamasDobles<Triple.MIN_NUM_CAMAS_DOBLES || numCamasDobles>Triple.MAX_NUM_CAMAS_DOBLES);
-                    do{
-                        System.out.println("Inserte la cantidad de baños en la habitación: ");
-                        numBanos= Entrada.entero();
-                        if (numBanos<Triple.MIN_NUM_BANOS || numBanos>Triple.MAX_NUM_BANOS) System.out.println("La cantidad introducida no es correcta.");
-                    }while(numBanos<Triple.MIN_NUM_BANOS || numBanos>Triple.MAX_NUM_BANOS);
-                    return new Triple (numeroPlanta,numeroPuerta,precio, numBanos,numCamasIndividuales,numCamasDobles);*/
+
                     try {
                         System.out.println("Inserte el número de camas individuales: ");
                         numCamasIndividuales = Entrada.entero();
@@ -255,33 +226,6 @@ public class Consola {
                         break;
                     }
                 case SUITE:
-                    /*do {
-                        System.out.println("Inserte el número de camas individuales: ");
-                        numCamasIndividuales= Entrada.entero();
-                        if (numCamasIndividuales<Triple.MIN_NUM_CAMAS_INDIVIDUALES || numCamasIndividuales>Triple.MAX_NUM_CAMAS_INDIVIDUALES)
-                            System.out.println("No se ha introducido una cantidad correcta.");
-                    }while (numCamasIndividuales<Triple.MIN_NUM_CAMAS_INDIVIDUALES || numCamasIndividuales>Triple.MAX_NUM_CAMAS_INDIVIDUALES);
-                    do{
-                        System.out.println("Inserte el número de camas dobles: ");
-                        numCamasDobles = Entrada.entero();
-                        if (numCamasDobles<Triple.MIN_NUM_CAMAS_DOBLES || numCamasDobles>Triple.MAX_NUM_CAMAS_DOBLES)
-                            System.out.println("No se ha introducido una cantidad correcta,");
-                    }while (numCamasDobles<Triple.MIN_NUM_CAMAS_DOBLES || numCamasDobles>Triple.MAX_NUM_CAMAS_DOBLES);*/
-
-                    /*do{
-                        System.out.println("Inserte la cantidad de baños en la habitación: ");
-                        numBanos= Entrada.entero();
-                        if (numBanos<Triple.MIN_NUM_BANOS || numBanos>Triple.MAX_NUM_BANOS) System.out.println("La cantidad introducida no es correcta.");
-                    }while(numBanos<Triple.MIN_NUM_BANOS || numBanos>Triple.MAX_NUM_BANOS);
-                    do {
-                        System.out.println("¿Dispone la habitación de Jacuzzi?:  (S/N)");
-                        respuesta= Entrada.caracter();
-                        if (respuesta!='N' || respuesta!='S') System.out.println("La respuesta debe ser S o N");
-                    }while(respuesta!='N' || respuesta!='S');
-                    if (respuesta=='S') jacuzzi=true;
-                    else jacuzzi=false;
-                    return new Suite(numeroPlanta,numeroPuerta,precio,numBanos,jacuzzi);*/
-                //return new Habitacion(numeroPlanta, numeroPuerta, precio, tipo);
                     try {
                         System.out.println("Inserte la cantidad de baños en la habitación: ");
                         numBanos = Entrada.entero();
@@ -302,28 +246,7 @@ public class Consola {
         }catch (NullPointerException | IllegalArgumentException e){
             System.out.println("-"+e.getMessage());
         }
-        /*
-        do {
-            System.out.println("¿Desea indicar el tipo de habitación?");
-            System.out.println("1.- Sí");
-            System.out.println("2.- No");
-            opcion = Entrada.entero();
-            if (opcion<1 || opcion>2) System.out.println("Debe seleccionar una opción adecuada");
-        }while (opcion<1 || opcion>2);
-        if (opcion == 2){
-            try{
-                return new Habitacion(numeroPlanta,numeroPuerta,precio);
-            }catch (NullPointerException | IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }else if (opcion == 1){
-            TipoHabitacion tipo = leerTipoHabitacion();
-            try {
-                return new Habitacion(numeroPlanta, numeroPuerta, precio, tipo);
-            }catch (NullPointerException | IllegalArgumentException e){
-                System.out.println(e.getMessage());
-            }
-        }*/
+
         return null;
     }
 
