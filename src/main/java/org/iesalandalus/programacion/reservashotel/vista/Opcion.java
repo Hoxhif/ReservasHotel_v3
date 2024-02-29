@@ -89,6 +89,8 @@ public enum Opcion {
 
 
     public static void setVista(Vista vista){
+        if (vista==null)
+            throw new NullPointerException("ERROR: La vista no puede ser nula.");
         vistaOpcion=vista;
     }
 
