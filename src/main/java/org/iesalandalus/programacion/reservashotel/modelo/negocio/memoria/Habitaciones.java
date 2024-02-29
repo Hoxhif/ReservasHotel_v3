@@ -107,6 +107,7 @@ public class Habitaciones implements IHabitaciones {
                 case SUITE -> copiaHabitaciones.add(new Suite((Suite) comprobarHabitacion));
             }
         }
+        Collections.sort(copiaHabitaciones, Comparator.comparing(Habitacion::getIdentificador));
         return copiaHabitaciones;
     }
     @Override
@@ -119,51 +120,13 @@ public class Habitaciones implements IHabitaciones {
     public void insertar (Habitacion habitacion) throws OperationNotSupportedException{
         if (habitacion == null)
             throw new NullPointerException("ERROR: No se puede insertar una habitación nula.");
-        /*if (capacidadSuperada(indice)) No hace falta esto porque ArrayList permite añadir sin restricción.
-            throw new OperationNotSupportedException("ERROR: No se aceptan más habitaciones.");*/
-        //List<Habitacion> insertarHabitaciones= coleccionHabitaciones;
-        //Iterator<Habitacion> iteradorHabitacion= insertarHabitaciones.listIterator();
-        /*while (iteradorHabitacion.hasNext()){
-            if (iteradorHabitacion.next().getIdentificador().equals(habitacion.getIdentificador())){
-                throw new OperationNotSupportedException("ERROR: Ya existe una habitación con ese identificador.");
-            }
-        }*/
-        // Esta es otra manera de que salte la excepción.
+
         if (get().contains(habitacion)){
             throw new OperationNotSupportedException("ERROR: Ya existe una habitación con ese identificador.");
         }
 
         coleccionHabitaciones.add(habitacion);
     }
-/*
-    Este método ya no es necesario con ArrayList.
-    private int buscarIndice (Habitacion habitacion){
-        if (habitacion == null)
-            throw new NullPointerException("ERROR: la habitación indicada es nula.");
-        for (int i=0; i<tamano; i++){
-            if (habitacion.equals(coleccionHabitaciones[i])){
-                return i;
-            }
-        }
-        return -1;
-    }
-
- */
-/*
-Estos métodos se usaban para controlar el array.
-    private boolean tamanoSuperado (int indice){
-        if (indice>-1)
-            return true;
-        else return false;
-    }
-
-    private boolean capacidadSuperada(int indice){
-        indice=getTamano();
-        if (indice>=getCapacidad())
-            return true;
-        else return false;
-    }
-    */
 
     @Override
     public Habitacion buscar (Habitacion habitacion) {
@@ -193,16 +156,6 @@ Estos métodos se usaban para controlar el array.
             coleccionHabitaciones.remove(habitacion);
         }
     }
-/*
-    Ya no hace falta usar este método con ArrayList.
-    private void desplazarUnaPosicionHaciaIzquierda(int indice){
-        for (int i = indice; i<tamano-1;i++){
-            coleccionHabitaciones[i] = coleccionHabitaciones[i+1];
-        }
-        coleccionHabitaciones[tamano-1] = null;
-
-    }
-    */
 
 
 
