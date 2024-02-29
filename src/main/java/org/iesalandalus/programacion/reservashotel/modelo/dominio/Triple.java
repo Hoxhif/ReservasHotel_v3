@@ -66,7 +66,8 @@ public class Triple extends Habitacion{
             throw new IllegalArgumentException("ERROR: El número de camas dobles de una habitación triple no puede ser inferior a 0 ni mayor que 1");
         if (getNumCamasIndividuales()<MIN_NUM_CAMAS_INDIVIDUALES || getNumCamasIndividuales()>MAX_NUM_CAMAS_INDIVIDUALES)
             throw new IllegalArgumentException("ERROR: El número de camas individuales de una habitación triple no puede ser inferior a 1 ni mayor que 3");
-            throw new IllegalArgumentException("ERROR: ");
+        if (getNumBanos() == 2 && getNumCamasIndividuales() == 1 && getNumCamasDobles() == 0 || getNumBanos() == 2 && getNumCamasIndividuales() == 2 && getNumCamasDobles() == 0 || getNumBanos() == 2 && getNumCamasIndividuales() == 3 && getNumCamasDobles() == 1)
+            throw new IllegalArgumentException("ERROR: La distribución de camas en una habitación triple tiene que ser 3 camas individuales y 0 doble o 1 cama individual y 1 doble");
     }
 
     @Override
