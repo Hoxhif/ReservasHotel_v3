@@ -100,12 +100,13 @@ public class Habitaciones implements IHabitaciones {
 
         while(iteradorHabitacion.hasNext()){
             Habitacion comprobarHabitacion= iteradorHabitacion.next();
-            if (comprobarHabitacion.equals(tipoHabitacion))
-                copiaHabitaciones.add(comprobarHabitacion);
+            switch (tipoHabitacion){
+                case SIMPLE -> copiaHabitaciones.add(new Simple((Simple)comprobarHabitacion));
+                case DOBLE -> copiaHabitaciones.add(new Doble((Doble)comprobarHabitacion));
+                case TRIPLE -> copiaHabitaciones.add(new Triple((Triple) comprobarHabitacion));
+                case SUITE -> copiaHabitaciones.add(new Suite((Suite) comprobarHabitacion));
+            }
         }
-
-
-
         return copiaHabitaciones;
     }
     @Override
