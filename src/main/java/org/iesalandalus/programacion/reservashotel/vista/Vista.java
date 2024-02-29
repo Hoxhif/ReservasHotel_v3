@@ -34,7 +34,6 @@ public class Vista {
             opcion = Consola.elegirOpcion();
             opcion.ejecutar();
         } while (opcion != Opcion.SALIR);
-        terminar();
     }
 
     public void terminar() {
