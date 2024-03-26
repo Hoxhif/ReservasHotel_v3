@@ -187,6 +187,19 @@ public class Consola {
                         numCamasIndividuales = Entrada.entero();
                         System.out.println("Inserte el número de camas dobles: ");
                         numCamasDobles = Entrada.entero();
+                        /*int opcion;
+                        do {
+                            System.out.println("Indique el formato de las camas: ");
+                            System.out.println("1.- 2 camas individuales y 0 dobles");
+                            System.out.println("2.- 1 cama individual y 1 doble");
+                            opcion = Entrada.entero();
+                        }while (opcion<1 || opcion>2);
+                        switch (opcion){
+                            case 1:
+                                return new Doble(numeroPlanta, numeroPuerta, precio, 2,0);
+                            case 2:
+                                return new Doble(numeroPlanta, numeroPuerta, precio, 1,1);
+                        }*/
                         return new Doble(numeroPlanta, numeroPuerta, precio, numCamasIndividuales, numCamasDobles);
                     }catch (NullPointerException | IllegalArgumentException e){
                         System.out.println("-"+e.getMessage());
@@ -202,6 +215,22 @@ public class Consola {
                         System.out.println("Inserte la cantidad de baños en la habitación: ");
                         numBanos = Entrada.entero();
                         return new Triple(numeroPlanta, numeroPuerta, precio, numBanos, numCamasIndividuales, numCamasDobles);
+                        /*int opcion;
+                        do {
+                            System.out.println("Indique el formato de las camas: ");
+                            System.out.println("1.- 3 camas individuales y 0 dobles");
+                            System.out.println("2.- 1 cama individual y 1 doble");
+                            opcion = Entrada.entero();
+                            System.out.println("Inserte la cantidad de baños en la habitación: ");
+                            numBanos = Entrada.entero();
+                        }while (opcion<1 || opcion>2);
+                        switch (opcion){
+                            case 1:
+                                return new Triple(numeroPlanta, numeroPuerta, precio, numBanos,3,0);
+                            case 2:
+                                return new Triple(numeroPlanta, numeroPuerta, precio, numBanos,1,1);
+                        }*/
+
                     }catch(NullPointerException | IllegalArgumentException e){
                         System.out.println("-"+e.getMessage());
                         break;

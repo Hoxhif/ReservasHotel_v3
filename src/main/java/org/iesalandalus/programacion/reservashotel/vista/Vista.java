@@ -394,7 +394,22 @@ public class Vista {
             if (tipoHabitacion != null) {
                 Iterator<Reserva> iteradorReservaTipoHabitacion= controlador.getReserva(tipoHabitacion).iterator();
                 while (iteradorReservaTipoHabitacion.hasNext()){
-                    System.out.println(iteradorReservaTipoHabitacion.next());
+                    Reserva reservaSiguiente = iteradorReservaTipoHabitacion.next();
+                    if (tipoHabitacion == TipoHabitacion.SIMPLE){
+                    for (Reserva comprobarReserva: controlador.getReserva(TipoHabitacion.DOBLE)){
+                        if (!comprobarReserva.getHabitacion().getIdentificador().equals(reservaSiguiente.getHabitacion().getIdentificador()))
+                            System.out.println(reservaSiguiente);
+                    }
+                        for (Reserva comprobarReserva: controlador.getReserva(TipoHabitacion.TRIPLE)){
+                            if (!comprobarReserva.getHabitacion().getIdentificador().equals(reservaSiguiente.getHabitacion().getIdentificador()))
+                                System.out.println(reservaSiguiente);
+                        }
+                        for (Reserva comprobarReserva: controlador.getReserva(TipoHabitacion.SUITE)){
+                            if (!comprobarReserva.getHabitacion().getIdentificador().equals(reservaSiguiente.getHabitacion().getIdentificador()))
+                                System.out.println(reservaSiguiente);
+                        }
+                    }
+                    System.out.println(reservaSiguiente);
                 }
                 /*for (Reserva reservasTipoHabitacion : controlador.getReserva(tipoHabitacion)) {
                     System.out.println(reservasTipoHabitacion);
@@ -500,7 +515,7 @@ public class Vista {
                     int contador=1;
                     // ME FALTA POR A�ADIR LA CONFIRMACI�N FINAL DE BORRAR LA RESERVA QUE SE SELECCIONA.
                     do {
-                        System.out.println("Listado de reservas del Huesped " + huesped.getNombre() + ":");
+                        System.out.println("Listado de reservas del Huesped:");
                         Iterator<Reserva> iteradorAnularReserva= controlador.getReserva(huesped).iterator();
                         while (iteradorAnularReserva.hasNext()){
                             System.out.println(contador+ ".- "+iteradorAnularReserva.next().toString());
